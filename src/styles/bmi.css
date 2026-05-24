@@ -4,7 +4,8 @@
   justify-content: center;
   align-items: center;
   padding-top: 120px;
-  padding-right: 200px; 
+  width: 100%; 
+  box-sizing: border-box;
 }
 
 
@@ -19,6 +20,7 @@
   cursor: pointer;
   box-shadow: 0 10px 25px rgba(0, 114, 255, 0.35);
   transition: all 0.25s ease;
+  margin: 0 auto; 
 }
 
 .open-btn:hover {
@@ -124,9 +126,6 @@
 
 @media (max-width: 768px) {
   .open-bmi-wrapper {
-    padding-right: 0; 
-    padding-left: 0;
-    width: 100%;
-    justify-content: center;
+    padding-top: 60px; 
   }
 }
