@@ -341,7 +341,10 @@ export default function Dashboard() {
                     <strong>{w.exercise}</strong>
 
                     <div>
-                      {w.sets}×{w.reps} @ {w.weight}kg • {w.calories} kcal
+                      <div>
+                        {w.sets}×{w.reps} @ {w.weight}kg
+                        {w.calories > 0 && ` • ${w.calories} kcal`}
+                      </div>
                     </div>
 
                   </div>
