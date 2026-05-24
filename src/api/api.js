@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://activezone-backend.onrender.com/api"
+  baseURL: process.env.NODE_ENV === "production" ? "https://activezone-backend.onrender.com/api" : "http://localhost:5000/api"
 });
 
 api.interceptors.request.use((config) => {
