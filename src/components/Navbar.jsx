@@ -15,13 +15,13 @@ export default function Navbar() {
 
   const dropdownRef = useRef(null);
 
-  
+  // Tema (Light/Dark mode)
   useEffect(() => {
     document.documentElement.classList.toggle("dark", dark);
     localStorage.setItem("theme", dark ? "dark" : "light");
   }, [dark]);
 
-  
+  // Zatvori dropdown ako se ekran raširi iznad mobilne rezolucije
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 768) {
@@ -33,12 +33,12 @@ export default function Navbar() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  
+  // Zatvori dropdown automatski pri promjeni rute
   useEffect(() => {
     setOpen(false);
   }, [location.pathname]);
 
-  
+  // Zatvaranje na klik izvan dropdowna ili gumba
   useEffect(() => {
     const handleClickOutside = e => {
       if (
@@ -61,13 +61,12 @@ export default function Navbar() {
   }, [open]);
 
   return (
-    <header className="top-nav">
-      
+    <header className="top-nav" ref={dropdownRef}>
       <div className="nav-left">
         <img src={logo} alt="ActiveZone" className="logo" />
       </div>
 
-      
+      {/* Desktop navigacija */}
       <nav className="nav-links">
         <NavLink to="/dashboard">Dashboard</NavLink>
         <NavLink to="/bmi">BMI</NavLink>
@@ -79,7 +78,7 @@ export default function Navbar() {
         </button>
       </nav>
 
-      
+      {/* Kontrole s desne strane */}
       <div className="nav-actions">
         <button
           className="theme-toggle"
@@ -88,27 +87,25 @@ export default function Navbar() {
           {dark ? "☀" : "🌙"}
         </button>
 
-        
-        <div ref={dropdownRef} className="mobile-menu-wrapper">
-          <button
-            className="menu-btn"
-            onClick={() => setOpen(prev => !prev)}
-          >
-            ☰
-          </button>
-
-          {open && (
-            <div className="dropdown">
-              <NavLink to="/dashboard">Dashboard</NavLink>
-              <NavLink to="/bmi">BMI</NavLink>
-              <NavLink to="/about">About</NavLink>
-              <button onClick={logout} className="dropdown-logout-btn">
-                Logout
-              </button>
-            </div>
-          )}
-        </div>
+        <button
+          className="menu-btn"
+          onClick={() => setOpen(prev => !prev)}
+        >
+          ☰
+        </button>
       </div>
+
+      {/* Dropdown postavljen izvan svih flex kontejnera s fiksnom pozicijom */}
+      {open && (
+        <div className="dropdown">
+          <NavLink to="/dashboard">Dashboard</NavLink>
+          <NavLink to="/bmi">BMI</NavLink>
+          <NavLink to="/about">About</NavLink>
+          <button onClick={logout} className="dropdown-logout-btn">
+            Logout
+          </button>
+        </div>
+      )}
     </header>
   );
 }
