@@ -15,7 +15,7 @@ export default function Navbar() {
 
   const dropdownRef = useRef(null);
 
- 
+  
   useEffect(() => {
     document.documentElement.classList.toggle("dark", dark);
     localStorage.setItem("theme", dark ? "dark" : "light");
@@ -51,10 +51,12 @@ export default function Navbar() {
 
     if (open) {
       document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("touchstart", handleClickOutside);
     }
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
     };
   }, [open]);
 
@@ -86,21 +88,26 @@ export default function Navbar() {
           {dark ? "☀" : "🌙"}
         </button>
 
-        <button
-          className="menu-btn"
-          onClick={() => setOpen(prev => !prev)}
-        >
-          ☰
-        </button>
+        
+        <div ref={dropdownRef} className="mobile-menu-wrapper">
+          <button
+            className="menu-btn"
+            onClick={() => setOpen(prev => !prev)}
+          >
+            ☰
+          </button>
 
-        {open && (
-          <div className="dropdown" ref={dropdownRef}>
-            <NavLink to="/dashboard">Dashboard</NavLink>
-            <NavLink to="/bmi">BMI</NavLink>
-            <NavLink to="/about">About</NavLink>
-            <button onClick={logout}>Logout</button>
-          </div>
-        )}
+          {open && (
+            <div className="dropdown">
+              <NavLink to="/dashboard">Dashboard</NavLink>
+              <NavLink to="/bmi">BMI</NavLink>
+              <NavLink to="/about">About</NavLink>
+              <button onClick={logout} className="dropdown-logout-btn">
+                Logout
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </header>
   );
