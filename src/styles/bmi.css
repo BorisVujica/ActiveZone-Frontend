@@ -1,17 +1,13 @@
-/* ===============================
-   OPEN BMI WRAPPER
-================================ */
+
 .open-bmi-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   padding-top: 120px;
-  padding-right: 200px;
+  padding-right: 200px; 
 }
 
-/* ===============================
-   OPEN BUTTON
-================================ */
+
 .open-btn {
   padding: 14px 36px;
   border-radius: 999px;
@@ -33,9 +29,7 @@
   transform: scale(0.95);
 }
 
-/* ===============================
-   BACKDROP
-================================ */
+
 .bmi-backdrop {
   position: fixed;
   inset: 0;
@@ -47,13 +41,12 @@
   z-index: 1000;
 }
 
-/* ===============================
-   MODAL
-================================ */
+
 .bmi-modal {
   background: var(--bg-card);
   color: var(--text-main);
   width: 360px;
+  max-width: 90vw; 
   padding: 28px;
   border-radius: 18px;
   box-shadow: 0 30px 60px rgba(0,0,0,0.35);
@@ -68,9 +61,7 @@
   }
 }
 
-/* ===============================
-   INPUTS
-================================ */
+
 .bmi-inputs {
   display: flex;
   gap: 12px;
@@ -80,6 +71,7 @@
 
 .bmi-inputs input {
   width: 140px;
+  max-width: 45%; 
   padding: 14px;
   font-size: 15px;
   border-radius: 12px;
@@ -96,16 +88,12 @@
   box-shadow: 0 0 0 4px rgba(0,198,255,0.2);
 }
 
-/* ===============================
-   RESULT
-================================ */
+
 .bmi-result strong {
   font-size: 34px;
 }
 
-/* ===============================
-   STATUS
-================================ */
+
 .bmi-status {
   font-size: 18px;
   font-weight: 600;
@@ -131,4 +119,14 @@
 
 .close-btn:hover {
   opacity: 0.85;
+}
+
+
+@media (max-width: 768px) {
+  .open-bmi-wrapper {
+    padding-right: 0; 
+    padding-left: 0;
+    width: 100%;
+    justify-content: center;
+  }
 }
