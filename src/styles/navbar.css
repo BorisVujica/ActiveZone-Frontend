@@ -74,13 +74,14 @@
   color: var(--text-main);
 }
 
-
+/* Omotač za mobilni izbornik */
 .mobile-menu-wrapper {
   position: relative;
   display: flex;
   align-items: center;
 }
 
+/* Glavni dropdown stilovi - postavljen preko svega */
 .dropdown {
   position: absolute;
   top: 45px;
@@ -89,11 +90,11 @@
   border-radius: 14px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.5);
   padding: 12px 0;
-  min-width: 180px;
+  width: 180px; /* Fiksna širina sprječava vodoravno skrolanje */
   display: flex;
   flex-direction: column;
   animation: fadeDown 0.2s ease;
-  z-index: 1100;
+  z-index: 9999; /* Maksimalni z-index da ide preko cijelog sadržaja */
 }
 
 .dropdown a,
@@ -148,6 +149,7 @@
   overflow-x: hidden;
 }
 
+/* Mobilne prilagodbe */
 @media (max-width: 768px) {
   .top-nav {
     padding: 0 14px;
@@ -157,10 +159,10 @@
     margin-left: auto;
   }
 
+  
   .dropdown {
     right: 0;
-    width: calc(100vw - 32px);
-    max-width: 200px;
+    width: 180px; 
   }
 
   .logo {
