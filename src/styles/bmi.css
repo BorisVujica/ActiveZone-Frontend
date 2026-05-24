@@ -1,0 +1,134 @@
+/* ===============================
+   OPEN BMI WRAPPER
+================================ */
+.open-bmi-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 120px;
+  padding-right: 200px;
+}
+
+/* ===============================
+   OPEN BUTTON
+================================ */
+.open-btn {
+  padding: 14px 36px;
+  border-radius: 999px;
+  border: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0, 114, 255, 0.35);
+  transition: all 0.25s ease;
+}
+
+.open-btn:hover {
+  transform: translateY(-2px);
+}
+
+.open-btn:active {
+  transform: scale(0.95);
+}
+
+/* ===============================
+   BACKDROP
+================================ */
+.bmi-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* ===============================
+   MODAL
+================================ */
+.bmi-modal {
+  background: var(--bg-card);
+  color: var(--text-main);
+  width: 360px;
+  padding: 28px;
+  border-radius: 18px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+  animation: pop 0.25s ease-out;
+  text-align: center;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+}
+
+/* ===============================
+   INPUTS
+================================ */
+.bmi-inputs {
+  display: flex;
+  gap: 12px;
+  margin: 18px 0 22px;
+  justify-content: center;
+}
+
+.bmi-inputs input {
+  width: 140px;
+  padding: 14px;
+  font-size: 15px;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  background: var(--bg-main);
+  color: var(--text-main);
+  text-align: center;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.bmi-inputs input:focus {
+  border-color: #00c6ff;
+  box-shadow: 0 0 0 4px rgba(0,198,255,0.2);
+}
+
+/* ===============================
+   RESULT
+================================ */
+.bmi-result strong {
+  font-size: 34px;
+}
+
+/* ===============================
+   STATUS
+================================ */
+.bmi-status {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.bmi-status.underweight { color: #4caf50; }
+.bmi-status.normal { color: #ffb300; }
+.bmi-status.overweight { color: #ff9800; }
+.bmi-status.obese { color: #e53935; }
+
+
+.close-btn {
+  margin-top: 22px;
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  background: var(--bg-main);
+  color: var(--text-main);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  opacity: 0.85;
+}

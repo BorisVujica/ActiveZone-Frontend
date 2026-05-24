@@ -1,0 +1,45 @@
+.about-page {
+  min-height: calc(100vh - 80px);
+  padding: 60px;
+  background: var(--bg-main);
+}
+
+.about-box {
+  max-width: 900px;
+  background: var(--bg-card);
+  padding: 50px 60px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,.1);
+  color: var(--text-main);
+}
+
+.about-box h1,
+.about-section h3,
+.about-section p,
+.about-intro {
+  color: var(--text-main);
+}
+
+@media (max-width: 768px) {
+  .about-page,
+  .about-card {
+    margin-left: -200px;
+    margin-right: 1px;
+    padding-left: 0px;
+    padding-right: 10px;
+    padding-top: 1px;
+    padding-bottom: 20px;
+    
+  }
+
+  .about-card {
+    max-width: calc(100% - 12px);
+  }
+
+  .about-card p,
+  .about-card h1,
+  .about-card h2,
+  .about-card h3 {
+    text-align: left;
+  }
+}
