@@ -26,8 +26,6 @@
   box-shadow: 0 10px 28px rgba(0,0,0,.35);
 }
 
-
-
 .modal-backdrop {
   position: fixed;
   inset: 0;
@@ -39,8 +37,9 @@
   z-index: 2000;
 }
 
+
 .modal {
-  width: 340px;
+  width: 460px;
   max-width: 92vw;
   max-height: calc(100vh - 70px);
 
@@ -54,32 +53,25 @@
   box-shadow: 0 20px 40px rgba(0,0,0,.45);
 }
 
-
-
 .modal h3 {
   margin-bottom: 18px;
 }
 
 
-
 .workout-list {
-  max-height: 100px; 
+  max-height: 220px; 
   padding-right: 6px;
 
   display: flex;
   flex-direction: column;
   gap: 12px;
 
-  margin-bottom: -11px;
+  margin-bottom: 14px; 
   
- 
   overflow-y: auto; 
-  
-  
   scrollbar-width: thin;
   scrollbar-color: #555 transparent;
 }
-
 
 .workout-list::-webkit-scrollbar {
   width: 6px;
@@ -125,8 +117,6 @@
   cursor: pointer;
 }
 
-
-
 .select-wrapper {
   margin-top: 12px;
 }
@@ -148,11 +138,9 @@
   color: white;
   font-size: 14px;
   outline: none;
-
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-
   transition: .2s;
 }
 
@@ -165,8 +153,6 @@
   border-color: #00e5ff;
   box-shadow: 0 0 0 2px rgba(0,229,255,.25);
 }
-
-
 
 .modal input {
   width: 100%;
@@ -193,7 +179,6 @@
 .input-row input {
   flex: 1;
 }
-
 
 .modal-actions {
   margin-top: auto;
@@ -226,8 +211,6 @@
   cursor: pointer;
 }
 
-
-
 .pr-card {
   margin-top: 32px;
 }
@@ -259,8 +242,6 @@
   margin-left: 6px;
 }
 
-
-
 .weekly-summary {
   margin-top: 32px;
 }
@@ -284,9 +265,7 @@
 }
 
 
-
 @media (max-width: 768px) {
-
   .page-container {
     margin-left: -210px;
     margin-right: 10px;
