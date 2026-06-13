@@ -297,13 +297,13 @@ export default function Dashboard() {
                   setSearch("");
                 }}
               >
-                <option value="Chest">Chest</option>
-                <option value="Back">Back</option>
-                <option value="Shoulders">Shoulders</option>
-                <option value="Biceps">Biceps</option>
-                <option value="Triceps">Triceps</option>
-                <option value="Legs">Legs</option>
-                <option value="Abs">Abs</option>
+                <option value="Chest">🦍 Chest</option>
+                <option value="Back">🧗 Back</option>
+                <option value="Shoulders">🏔️ Shoulders</option>
+                <option value="Biceps">💪 Biceps</option>
+                <option value="Triceps">⚡ Triceps</option>
+                <option value="Legs">🦵 Legs</option>
+                <option value="Abs">🧱 Abs</option>
               </select>
             </div>
 
@@ -387,7 +387,7 @@ export default function Dashboard() {
               value={newExerciseCategory}
               onChange={e => setNewExerciseCategory(e.target.value)}
             >
-              <option value="Chest">Chest</option>
+              <option value="Chest">Chest </option>
               <option value="Back">Back</option>
               <option value="Shoulders">Shoulders</option>
               <option value="Biceps">Biceps</option>
