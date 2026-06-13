@@ -17,8 +17,8 @@ export default function BMICalculator() {
       
       <div className="open-bmi-wrapper">
         <button className="open-btn" onClick={() => setOpen(true)}>
-  Open BMI calculator
-</button>
+          Open BMI calculator
+        </button>
 
       </div>
 
@@ -48,24 +48,24 @@ export default function BMICalculator() {
 </div>
 
 
-            {bmi && (
-              <>
-                <BMIGauge bmi={Number(bmi)} />
+    {bmi && (
+     <>
+      <BMIGauge bmi={Number(bmi)} />
 
-                <div className="bmi-result">
-                  <strong>{bmi}</strong>
-                </div>
-              </>
-            )}
+       <div className="bmi-result">
+          <strong>{bmi}</strong>
+       </div>
+     </>
+     )}
 
-            <button
-              className="close-btn"
-              onClick={() => setOpen(false)}
-            >
-              Close
-            </button>
-          </div>
-        </div>
+     <button
+       className="close-btn"
+        onClick={() => setOpen(false)}
+      >
+        Close
+      </button>
+    </div>
+  </div>
       )}
     </>
   );

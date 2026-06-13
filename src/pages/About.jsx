@@ -18,7 +18,7 @@ export default function About() {
           <p>
             Naša misija je pomoći korisnicima u razumijevanju vlastitog zdravlja
             te ih motivirati na donošenje dugoročnih, održivih odluka vezanih uz
-            fizičku aktivnost i opće blagostanje.
+            fizičku aktivnost.
           </p>
         </div>
 
@@ -26,8 +26,8 @@ export default function About() {
           <h3>Što ActiveZone nudi</h3>
           <ul>
             <li>Praćenje i analiza tjelesne aktivnosti</li>
+            <li>Štopericu za praćanje odmora</li>
             <li>BMI kalkulator s vizualnim prikazom rezultata</li>
-            <li>Jasne i razumljive zdravstvene preporuke</li>
             <li>Jednostavno i intuitivno korisničko sučelje</li>
           </ul>
         </div>

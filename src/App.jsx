@@ -18,12 +18,7 @@ function App() {
     <>
       {!hideNavbar && <Navbar />}
 
-      <div
-        style={{
-          marginLeft: hideNavbar ? 0 : 220,
-          paddingTop: hideNavbar ? 0 : 20,
-        }}
-      >
+      <div className={hideNavbar ? "auth-layout" : "app-layout"}>
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />

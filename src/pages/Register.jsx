@@ -20,7 +20,7 @@ export default function Register() {
 
   return (
     <div className="auth-page">
-      {/* LOGO GORE LIJEVO */}
+      
       <div className="auth-logo">
         <img src={logo} alt="Logo" />
       </div>

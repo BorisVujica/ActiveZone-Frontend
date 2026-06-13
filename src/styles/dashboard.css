@@ -267,11 +267,30 @@
 
 @media (max-width: 768px) {
 
+  @media (max-width: 768px) {
   .page-container {
-    margin-left: -210px;
-    margin-right: 10px;
-    padding: 0;
+    width: 100%;
+    margin: 0 auto;
+    padding: 16px;
   }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal {
+    width: 100%;
+    padding: 16px;
+  }
+
+  .workout-list {
+    max-height: 180px;
+  }
+
+  .input-row {
+    flex-direction: column;
+  }
+}
 
   .modal {
     width: 100%;

@@ -1,6 +1,6 @@
 const messages = [
   "Svaki trening je korak bliže cilju 💪",
-  "Dosljednost je jača od motivacije.",
+  "Disciplina je jača od motivacije.",
   "Zdravlje je najveće bogatstvo.",
   "Ne odustaj – rezultat dolazi."
 ];
@@ -11,3 +11,4 @@ export default function MotivationText() {
 
   return <p style={{ marginTop: "15px" }}>{message}</p>;
 }
+//ne sluzi nicemu trenutno

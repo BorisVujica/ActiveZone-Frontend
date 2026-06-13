@@ -2,9 +2,14 @@
   min-height: calc(100vh - 80px);
   padding: 60px;
   background: var(--bg-main);
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .about-box {
+  width: 100%;
   max-width: 900px;
   background: var(--bg-card);
   padding: 50px 60px;
@@ -20,26 +25,14 @@
   color: var(--text-main);
 }
 
+/* MOBILE */
 @media (max-width: 768px) {
-  .about-page,
-  .about-card {
-    margin-left: -200px;
-    margin-right: 1px;
-    padding-left: 0px;
-    padding-right: 10px;
-    padding-top: 1px;
-    padding-bottom: 20px;
-    
+  .about-page {
+    padding: 20px;
   }
 
-  .about-card {
-    max-width: calc(100% - 12px);
-  }
-
-  .about-card p,
-  .about-card h1,
-  .about-card h2,
-  .about-card h3 {
-    text-align: left;
+  .about-box {
+    padding: 20px;
+    width: 100%;
   }
 }
