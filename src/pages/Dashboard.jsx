@@ -79,6 +79,12 @@ export default function Dashboard() {
 
     fetchExercises();
   }, []);
+    
+  useEffect(() => {
+  if (showPRPopup) {
+    launchConfetti();
+  }
+}, [showPRPopup]);
 
   const filteredExercises = allExercises.filter(ex => {
     const categoryMatch = ex.category?.toLowerCase() === group.toLowerCase();
@@ -89,12 +95,31 @@ export default function Dashboard() {
   const { streak, showActiveRestHint } = useStreak(workouts);
 
   const launchConfetti = () => {
-    confetti({ particleCount: 140, spread: 80, origin: { y: 0.6 } });
+  const duration = 3000;
+  const end = Date.now() + duration;
 
-    setTimeout(() => {
-      confetti({ particleCount: 100, spread: 120, origin: { y: 0.5 } });
-    }, 250);
+  const frame = () => {
+    confetti({
+      particleCount: 4,
+      angle: 60,
+      spread: 55,
+      origin: { x: 0 }
+    });
+
+    confetti({
+      particleCount: 4,
+      angle: 120,
+      spread: 55,
+      origin: { x: 1 }
+    });
+
+    if (Date.now() < end) {
+      requestAnimationFrame(frame);
+    }
   };
+
+  frame();
+};
 
   const calcScore = w => w.weight * w.sets * w.reps;
 
@@ -145,8 +170,7 @@ export default function Dashboard() {
     if (isNewPR(exercise, workoutData)) {
       setPrExercise(exercise);
       setShowPRPopup(true);
-      launchConfetti();
-    }
+}
 
     setWorkouts(prev => ({
       ...prev,
