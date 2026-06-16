@@ -213,15 +213,22 @@ export default function Navbar() {
           </div>
         </div>
 
-        <nav className="nav-links">
-          <NavLink to="/dashboard">Dashboard</NavLink>
-          <NavLink to="/bmi">BMI</NavLink>
-          <NavLink to="/about">About</NavLink>
+      <nav className="nav-links">
+        <NavLink to="/dashboard">Dashboard</NavLink>
 
-          <button className="logout" onClick={logout}>
-            ⎋ Logout
-          </button>
-        </nav>
+        <NavLink to="/bmi">BMI</NavLink>
+
+        <NavLink to="/about">About</NavLink>
+
+        <NavLink to="/security" className="security-link">
+         <span className="security-icon">🛡</span>
+         Security
+        </NavLink>
+
+        <button className="logout" onClick={logout}>
+          ⎋ Logout
+        </button>
+      </nav>
 
         <div className="nav-actions">
           <button
@@ -239,14 +246,24 @@ export default function Navbar() {
           </button>
         </div>
 
-        {open && (
-          <div className="dropdown">
-            <NavLink to="/dashboard">Dashboard</NavLink>
-            <NavLink to="/bmi">BMI</NavLink>
-            <NavLink to="/about">About</NavLink>
-            <button onClick={logout}>Logout</button>
-          </div>
-        )}
+       {open && (
+        <div className="dropdown">
+         <NavLink to="/dashboard">Dashboard</NavLink>
+
+         <NavLink to="/bmi">BMI</NavLink>
+
+         <NavLink to="/about">About</NavLink>
+
+         <NavLink to="/security" className="security-link">
+          <span className="security-icon">🛡</span>
+          Security
+         </NavLink>
+
+         <button onClick={logout}>
+           🚪 Logout
+        </button>
+  </div>
+)}
       </header>
 
       {alarmOverlay && (

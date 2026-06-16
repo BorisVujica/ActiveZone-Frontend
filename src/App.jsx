@@ -6,6 +6,7 @@ import About from "./pages/About";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Security from "./pages/Security";
 
 function App() {
   const location = useLocation();
@@ -42,6 +43,15 @@ function App() {
           />
 
           <Route path="/about" element={<About />} />
+        
+         <Route
+          path="/security"
+          element={
+           <ProtectedRoute>
+            <Security />
+           </ProtectedRoute>
+  }
+/>
         </Routes>
       </div>
     </>

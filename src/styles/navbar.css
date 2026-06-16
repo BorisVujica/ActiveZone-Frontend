@@ -173,6 +173,18 @@
   color: #00e5ff;
 }
 
+.security-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.security-icon {
+  display: flex;
+  align-items: center;
+  transform: translateY(-2px);
+}
+
 .logout {
   background: none;
   border: none;
