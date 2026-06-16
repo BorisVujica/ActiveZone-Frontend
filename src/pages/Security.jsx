@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
 import api from "../api/api";
 import "../styles/security.css";
+import toast from "react-hot-toast";
 
 export default function Security() {
   const [phone, setPhone] = useState("");
   const [network, setNetwork] = useState("5g");
 
   const [saved, setSaved] = useState(false);
-
   const [result, setResult] = useState(null);
+
+  const [loading, setLoading] = useState(false);
+  const [lastCheck, setLastCheck] = useState(null);
 
   useEffect(() => {
     fetchPhone();
@@ -28,36 +31,72 @@ export default function Security() {
   };
 
   const savePhone = async () => {
+    const cleanedPhone = phone.replace(/\s+/g, "");
+
+    if (!cleanedPhone.startsWith("+385")) {
+      toast.error("Number must start with +385.");
+      return;
+    }
+
+    const digitsOnly = cleanedPhone.replace(/^\+/, "");
+
+    if (!/^\d+$/.test(digitsOnly)) {
+      toast.error("Phone number can contain only digits.");
+      return;
+    }
+
+    if (digitsOnly.length !== 11) {
+      toast.error("Invalid number must have 11 digits. Example: +38591234567");
+      return;
+    }
+
     try {
       await api.put("/security/phone", {
-        phone,
+        phone: cleanedPhone,
       });
 
+      setPhone(cleanedPhone);
       setSaved(true);
-      alert("Phone number saved.");
+      toast.success("Phone number saved.");
     } catch (err) {
       console.error(err);
+      toast.error("Failed to save number.");
     }
   };
 
   const runCheck = async () => {
     try {
-      const res = await api.post("/security/check", {
+      setLoading(true);
+      setResult(null);
+
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+
+      const response = await api.post("/security/check", {
         network,
       });
 
-      setResult(res.data);
+      if (response.data.error) {
+        toast.error(response.data.message || "Security check failed.");
+      } else if (response.data.risk === "HIGH") {
+        toast.error("High risk detected!");
+      } else {
+        toast.success("Security check completed.");
+      }
+
+      setResult(response.data);
+      setLastCheck(new Date().toLocaleString("hr-HR"));
     } catch (err) {
       console.error(err);
+      toast.error("Security check failed.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="dashboard-page">
       <div className="page-container">
-
         <div className="card security-card">
-
           <h2>🛡 Security Center</h2>
 
           {!saved ? (
@@ -92,6 +131,7 @@ export default function Security() {
                   onClick={() => {
                     setSaved(false);
                     setResult(null);
+                    setLastCheck(null);
                   }}
                 >
                   ✏ Change Number
@@ -117,13 +157,15 @@ export default function Security() {
               <button
                 className="add-btn"
                 onClick={runCheck}
+                disabled={loading}
               >
-                Run CAMARA Security Check
+                {loading
+                  ? "Checking..."
+                  : "Run CAMARA Security Check"}
               </button>
 
               {result && (
                 <div className="security-result">
-
                   {result.error ? (
                     <>
                       <p>⚠ {result.message}</p>
@@ -154,17 +196,28 @@ export default function Security() {
                     </>
                   )}
 
+                  {lastCheck && (
+                    <p
+                      style={{
+                        marginTop: "12px",
+                        opacity: 0.8,
+                        fontSize: "14px",
+                      }}
+                    >
+                      Last security check:
+                      <br />
+                      {lastCheck}
+                    </p>
+                  )}
+
                   <small>
                     CAMARA Open Gateway (Demonstration Mode)
                   </small>
-
                 </div>
               )}
             </>
           )}
-
         </div>
-
       </div>
     </div>
   );

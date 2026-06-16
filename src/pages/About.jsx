@@ -28,6 +28,7 @@ export default function About() {
             <li>Praćenje i analiza tjelesne aktivnosti</li>
             <li>Štopericu za praćanje odmora</li>
             <li>BMI kalkulator s vizualnim prikazom rezultata</li>
+            <li>Demostracija security checka na bazu CAMARA open gateway</li>
             <li>Jednostavno i intuitivno korisničko sučelje</li>
           </ul>
         </div>
