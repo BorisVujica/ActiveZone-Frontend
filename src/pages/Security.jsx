@@ -45,8 +45,8 @@ export default function Security() {
       return;
     }
 
-    if (digitsOnly.length !== 11) {
-      toast.error("Invalid number must have 11 digits. Example: +38591234567");
+    if (digitsOnly.length !== 13) {
+      toast.error("Invalid number must have 13 digits. Example: +3859123456789");
       return;
     }
 
