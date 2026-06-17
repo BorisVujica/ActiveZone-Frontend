@@ -15,8 +15,8 @@ export default function Navbar() {
     localStorage.getItem("theme") === "dark"
   );
 
-  const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(0);
+  const [minutes, setMinutes] = useState("");
+  const [seconds, setSeconds] = useState("");
   const [timeLeft, setTimeLeft] = useState(0);
   const [running, setRunning] = useState(false);
 
@@ -66,24 +66,18 @@ export default function Navbar() {
     };
   }, []);
 
-  const normalizeTime = (m, s) => {
-    const total = (Number(m) || 0) * 60 + (Number(s) || 0);
-    return {
-      m: Math.floor(total / 60),
-      s: total % 60,
-    };
-  };
-
   const handleMinutesChange = (e) => {
-    const t = normalizeTime(e.target.value, seconds);
-    setMinutes(t.m);
-    setSeconds(t.s);
+    const value = e.target.value;
+    if (value === "" || /^\d+$/.test(value)) {
+      setMinutes(value);
+    }
   };
 
   const handleSecondsChange = (e) => {
-    const t = normalizeTime(minutes, e.target.value);
-    setMinutes(t.m);
-    setSeconds(t.s);
+    const value = e.target.value;
+    if (value === "" || /^\d+$/.test(value)) {
+      setSeconds(value);
+    }
   };
 
   const formatTime = (t) => {
@@ -130,7 +124,9 @@ export default function Navbar() {
   };
 
   const startTimer = () => {
-    setTimeLeft(minutes * 60 + seconds);
+    const totalSeconds =
+      Number(minutes || 0) * 60 + Number(seconds || 0);
+    setTimeLeft(totalSeconds);
     setRunning(true);
   };
 
@@ -167,61 +163,69 @@ export default function Navbar() {
 
           <div className="timer-wrapper">
             <span
-              className="timer-icon"
+              className={`timer-icon ${running ? "timer-icon-active" : ""}`}
               onClick={() => setTimerOpen((p) => !p)}
             >
               ⏱
+              {running && <span className="timer-badge" />}
             </span>
 
             {timerOpen && (
-              <div className="timer-popup">
-                <div className="timer-inputs">
-                  <input
-                    type="number"
-                    min="0"
-                    value={minutes}
-                    onChange={handleMinutesChange}
-                    placeholder="min"
-                  />
-                  <span>:</span>
-                  <input
-                    type="number"
-                    min="0"
-                    value={seconds}
-                    onChange={handleSecondsChange}
-                    placeholder="sec"
-                  />
-                </div>
+              <>
+                <div
+                  className="mobile-menu-backdrop"
+                  onClick={() => setTimerOpen(false)}
+                />
 
-                <div className="timer-display">
-                  {formatTime(timeLeft)}
-                </div>
+                <div className="timer-popup">
+                  <div className="timer-inputs">
+                    <input
+                      type="number"
+                      min="0"
+                      value={minutes}
+                      onChange={handleMinutesChange}
+                      placeholder="min"
+                    />
+                    <span>:</span>
+                    <input
+                      type="number"
+                      min="0"
+                      value={seconds}
+                      onChange={handleSecondsChange}
+                      placeholder="sec"
+                    />
+                  </div>
 
-                <div className="timer-buttons">
-                  <button onClick={startTimer}>Start</button>
-                  <button onClick={pauseTimer}>Pause</button>
-                  <button onClick={resetTimer}>Reset</button>
+                  <div className="timer-display">
+                    {formatTime(timeLeft)}
+                  </div>
 
-                  {alarmActive && (
-                    <button className="stop-alarm" onClick={stopAlarm}>
-                      Stop
-                    </button>
-                  )}
+                  <div className="timer-buttons">
+                    <button onClick={startTimer}>Start</button>
+                    <button onClick={pauseTimer}>Pause</button>
+                    <button onClick={resetTimer}>Reset</button>
+
+                    {alarmActive && (
+                      <button className="stop-alarm" onClick={stopAlarm}>
+                        Stop
+                      </button>
+                    )}
+                  </div>
                 </div>
-              </div>
+              </>
             )}
           </div>
         </div>
 
       <nav className="nav-links">
-        <NavLink to="/dashboard">Dashboard</NavLink>
+        <NavLink to="/dashboard">🏠Dashboard</NavLink>
 
-        <NavLink to="/bmi">BMI</NavLink>
+        <NavLink to="/bmi">📏BMI</NavLink>
 
-        <NavLink to="/about">About</NavLink>
+        <NavLink to="/about">ℹ️About</NavLink>
 
         <NavLink to="/security" className="security-link">
-         <span className="security-icon">🛡</span>
+         <span className="security-icon">🔐</span>
          Security
         </NavLink>
 
@@ -247,22 +251,39 @@ export default function Navbar() {
         </div>
 
        {open && (
-        <div className="dropdown">
-         <NavLink to="/dashboard">Dashboard</NavLink>
+        <>
+          <div
+            className="mobile-menu-backdrop"
+            onClick={() => setOpen(false)}
+          />
 
-         <NavLink to="/bmi">BMI</NavLink>
+          <div className="dropdown">
+           <NavLink to="/dashboard">
+             <span className="nav-icon">🏠</span>
+             <span>Dashboard</span>
+           </NavLink>
 
-         <NavLink to="/about">About</NavLink>
+           <NavLink to="/bmi">
+             <span className="nav-icon">📏</span>
+             <span>BMI</span>
+           </NavLink>
 
-         <NavLink to="/security" className="security-link">
-          <span className="security-icon">🛡</span>
-          Security
-         </NavLink>
+           <NavLink to="/about">
+             <span className="nav-icon">ℹ️</span>
+             <span>About</span>
+           </NavLink>
 
-         <button onClick={logout}>
-           🚪 Logout
-        </button>
-  </div>
+           <NavLink to="/security" className="security-link">
+            <span className="nav-icon">🔐</span>
+            <span>Security</span>
+           </NavLink>
+
+           <button onClick={logout}>
+             <span className="nav-icon">⎋</span>
+             <span>Logout</span>
+          </button>
+    </div>
+        </>
 )}
       </header>
 

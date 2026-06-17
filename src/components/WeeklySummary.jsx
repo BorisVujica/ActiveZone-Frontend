@@ -3,7 +3,7 @@
 export default function WeeklySummary({ streak, showActiveRestHint }) {
   return (
     <div className="card weekly-summary">
-      <h3>📊 Tjedni summary</h3>
+      <h3>📊 Trenutni streak</h3>
 
       {streak > 0 ? (
         <p className="streak-text">

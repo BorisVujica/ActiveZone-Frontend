@@ -231,7 +231,7 @@ export default function Dashboard() {
         <div className="dashboard-grid">
 
           <div className="card">
-            <h3>Kalendar treninga</h3>
+            <h3>📅 Kalendar treninga</h3>
 
             <MonthlyCalendar
               workouts={workouts}
@@ -263,7 +263,7 @@ export default function Dashboard() {
         />
 
         <div className="card pr-card">
-          <h3>🏆 Personal Records</h3>
+          <h3>🏆 Osobni rekordi</h3>
 
           {Object.keys(prHistory).length === 0 && (
             <p className="pr-empty">Još nema PR-ova</p>
